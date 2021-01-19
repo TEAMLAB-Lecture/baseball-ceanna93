@@ -276,16 +276,16 @@ def main():
         print("Random Number is : ", random_number)
         res = [0, 0]
         while res[0] != 3:
-            user_input = input("Input guess number : ")
+            user_input = input('Input guess number : ')
             if not is_validated_number(user_input):
                 print("Wrong Input, Input again")
                 continue
             res = get_strikes_or_ball(user_input, random_number)
             print(f"Strikes : {res[0]}, Balls : {res[1]}")
-        cont = input("You win, one more(Y/N)?")
+        cont = input('You win, one more(Y/N)?')
         while not (is_yes(cont) or is_no(cont)):
             print("Wrong Input, Input again")
-            cont = input("You win, one more(Y/N)?")
+            cont = input('You win, one more(Y/N)?')
         play = is_yes(cont)
 
     # ==================================
