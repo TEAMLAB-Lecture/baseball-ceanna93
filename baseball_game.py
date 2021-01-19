@@ -90,11 +90,11 @@ def is_duplicated_number(three_digit):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
     result = False
-    sorted_num = three_digit[:]
-    sorted_num.sort()
-    for i in range(1, 3):
-        if sorted_num[i] == sorted_num[i - 1]:
+    count = [0,0,0,0,0,0,0,0,0,0]
+    for i in three_digit:
+        if count[int(i)] == 1:
             return True
+        count[int(i)] = 1
 
     # ==================================
     return result
@@ -267,12 +267,26 @@ def is_no(one_more_input):
 
 def main():
     print("Play Baseball")
-    user_input = 999
-    random_number = str(get_not_duplicated_three_digit_number())
-    print("Random Number is : ", random_number)
+    user_input = ""
     # ===Modify codes below=============
     # 위의 코드를 포함하여 자유로운 수정이 가능함
-
+    play = True
+    while play:
+        random_number = str(get_not_duplicated_three_digit_number())
+        print("Random Number is : ", random_number)
+        res = [0, 0]
+        while res[0] != 3:
+            user_input = input("Input guess number : ")
+            if not is_validated_number(user_input):
+                print("Wrong Input, Input again")
+                continue
+            res = get_strikes_or_ball(user_input, random_number)
+            print(f"Strikes : {res[0]}, Balls : {res[1]}")
+        cont = input("You win, one more(Y/N)?")
+        while not (is_yes(cont) or is_no(cont)):
+            print("Wrong Input, Input again")
+            cont = input("You win, one more(Y/N)?")
+        play = is_yes(cont)
 
     # ==================================
     print("Thank you for using this program")
