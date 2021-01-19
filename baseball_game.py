@@ -153,7 +153,7 @@ def get_not_duplicated_three_digit_number():
 
     result = get_random_number()
     while is_duplicated_number(str(result)):
-        result = get_random_number
+        result = get_random_number()
     
     # ==================================
     return result
