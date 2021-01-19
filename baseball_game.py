@@ -90,12 +90,11 @@ def is_duplicated_number(three_digit):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
     result = False
-    count = [0,0,0,0,0,0,0,0,0,0]
-    for i in three_digit:
-        if count[int(i)] == 0:
-            count[int(i)] += 1
-            continue
-        result = True
+    sorted_num = three_digit[:]
+    sorted_num.sort()
+    for i in range(1, 3):
+        if sorted_num[i] == sorted_num[i - 1]:
+            return True
 
     # ==================================
     return result
